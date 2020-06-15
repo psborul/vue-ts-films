@@ -24,7 +24,7 @@
       :movie="movie"
     />
     <button
-      :disabled="isLastPage"
+      v-if="!isLastPage"
       @click="loadMoreMovies"
       class="btn movie-list__btn"
     >

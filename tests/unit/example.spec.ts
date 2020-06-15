@@ -12,11 +12,12 @@ describe('MovieList.vue', () => {
     localVue,
   });
 
-  test('is button load more exist', () => {
-    expect(MovieListComponent.contains('button.movie-list__btn')).toBe(true);
+  test('if it is not last page, there should be button load more', () => {
+    expect(store.getters.isLastPage).toBe(false);
+    expect(MovieListComponent.contains('.movie-list__btn')).toBe(true);
   });
 
-  test('if we click the load more btn, we should get new movies', async () => {
+  test('if we click the load more btn, we should not get empty array', async () => {
     MovieListComponent.find('button.movie-list__btn').trigger('click');
     expect(store.state.movies).not.toBe([]);
   });
